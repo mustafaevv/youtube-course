@@ -1,0 +1,63 @@
+@import "../../theme.scss";
+
+.header {
+  padding-top: 50px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 175px;
+    height: 51px;
+    margin-right: auto;
+  }
+
+  &__heart,
+  &__bag {
+    width: 30px;
+    height: 30px;
+    color: $green;
+    cursor: pointer;
+  }
+
+  &__bag {
+    margin-left: 20px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #55b74c 0%, #4ba043 162.75%);
+    border-radius: 7px;
+    margin-top: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $white;
+    padding: 15px 10px;
+    font-weight: 400;
+    line-height: 25px;
+    font-size: 18px;
+    display: inline-block;
+
+    &:hover::after{
+      transform: scaleX(1);
+    }
+
+    &::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      display: block;
+      background: $white;
+      transform: scaleX(0);
+      transition: 0.4s transform;
+      transform-origin:left;
+    }
+  }
+}
