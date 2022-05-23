@@ -7,12 +7,15 @@ import Container from "../../layout/Container";
 import classes from "./Header.module.scss";
 import logo from "../../images/logo.png";
 import categories from "../../routes/categories";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className={classes["header"]}>
       <Container className={classes["header__container"]}>
-        <img className={classes["header__logo"]} src={logo} alt="Flaristman" />
+        <Link to='/' className={classes["header__logo"]}>
+        <img src={logo} alt="Flaristman" />
+        </Link>
         <FontAwesomeIcon className={classes["header__heart"]} icon={faHeart} />
         <FontAwesomeIcon
           className={classes["header__bag"]}
@@ -21,9 +24,9 @@ const Header = () => {
       </Container>
       <Container>
         <ul className={classes['header__list']}>
-          {categories.map((link) => (
-            <li>
-              <a className={classes['header__link']} href={link.link}>{link.text}</a>
+          {categories.map(({link,text}) => (
+            <li key={link}>
+              <Link to={link} className={classes['header__link']}>{text}</Link>
             </li>
           ))}
         </ul>
