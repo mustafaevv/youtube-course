@@ -28,7 +28,7 @@ const ProductCart = ({ className,data }) => {
         {selected ? "added" : "add to cart"}
       </button >
       <button className={classes['card__like']}>
-        <FontAwesomeIcon  icon={faHeartRegular} />
+        <FontAwesomeIcon  icon={selected ? faHeartSolid  : faHeartRegular } />
       </button>
     </div>
   );
