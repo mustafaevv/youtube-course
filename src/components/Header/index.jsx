@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
+import classNames from "classnames";
 
 import Container from "../../layout/Container";
 import logo from "../../images/logo.png";
 import categories from "../../routes/categories";
+
 import classes from "./Header.module.scss";
-import classNames from "classnames";
 
 const Header = () => {
   const location = useLocation();
@@ -19,7 +20,12 @@ const Header = () => {
         <Link to="/" className={classes["header__logo"]}>
           <img src={logo} alt="Flaristman" />
         </Link>
-        <FontAwesomeIcon className={classes["header__heart"]} icon={faHeart} />
+        <Link to="/favorite">
+          <FontAwesomeIcon
+            className={classes["header__heart"]}
+            icon={faHeart}
+          />
+        </Link>
         <FontAwesomeIcon
           className={classes["header__bag"]}
           icon={faBagShopping}
@@ -33,7 +39,9 @@ const Header = () => {
                 to={link}
                 className={classNames(
                   classes["header__link"],
-                  location.pathname === link ? classes["header__link-active"] : ''
+                  location.pathname === link
+                    ? classes["header__link-active"]
+                    : ""
                 )}
               >
                 {text}

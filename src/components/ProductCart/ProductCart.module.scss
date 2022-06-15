@@ -46,19 +46,19 @@
     cursor: pointer;
     border: 3px $green solid;
     margin-top: 24px;
-    transition: 0.5s color,0.5s background;
+    transition: 0.5s color, 0.5s background;
 
-    &_selected{
+    &_selected {
       background: $green;
       color: $white;
     }
   }
 
-  &__like{
+  &__like {
     position: absolute;
     top: 30px;
     right: 30px;
-    color: $green;
+    color: $white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,9 +67,8 @@
     height: 30px;
     border: none;
     outline: none;
-    background: $white;
+    background: $green;
     border-radius: 4px;
     cursor: pointer;
-     
   }
 }

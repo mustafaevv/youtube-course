@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import DiscountsCarousel from "../../components/DiscountsCarousel";
 import Header from "../../components/Header";
 import ProductCart from "../../components/ProductCart";
 import Container from "../../layout/Container";
+
 import classes from "./Category.module.scss";
+import Title from "../../components/Title";
+import categories from "../../routes/categories";
 
 const Category = () => {
   const { type } = useParams();
+  const { pathname } = useLocation();
   const [data, setData] = useState(null);
+  const { like } = useSelector((state) => state);
+  const { text: title } = categories.find((item) => item.link === pathname);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +31,7 @@ const Category = () => {
   return (
     <>
       <Header />
+      {title && <Title>{title}</Title>}
       <Container className={classes["cards"]}>
         {data &&
           data.map((card) => (
@@ -30,9 +39,11 @@ const Category = () => {
               key={card.id}
               data={card}
               className={classes["card-item"]}
+              liked={card.id in like}
             />
           ))}
       </Container>
+      <DiscountsCarousel />
     </>
   );
 };

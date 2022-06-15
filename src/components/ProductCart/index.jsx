@@ -1,14 +1,18 @@
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
-import { faHeart as faHeartSolid} from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import classNames from "classnames";
 import classes from "./ProductCart.module.scss";
+import { likeItem } from "../../redux/likeSlice";
+import { useDispatch } from "react-redux";
 
-const ProductCart = ({ className,data }) => {
+const ProductCart = ({ className, data,liked }) => {
+  const dispatch = useDispatch();
   const [image] = data.images;
   const [selected, setSelected] = useState(false);
   const selectItem = () => setSelected((prevState) => !prevState);
+  const handleLike = () => dispatch(likeItem(data));
 
   return (
     <div className={classNames(classes["card"], className)}>
@@ -22,13 +26,13 @@ const ProductCart = ({ className,data }) => {
         onClick={selectItem}
         className={classNames(
           classes["card__button"],
-         selected && classes["card__button_selected"]
+          selected && classes["card__button_selected"]
         )}
       >
         {selected ? "added" : "add to cart"}
-      </button >
-      <button className={classes['card__like']}>
-        <FontAwesomeIcon  icon={selected ? faHeartSolid  : faHeartRegular } />
+      </button>
+      <button className={classes["card__like"]} onClick={handleLike}>
+        <FontAwesomeIcon icon={liked ? faHeartSolid : faHeartRegular} />
       </button>
     </div>
   );
