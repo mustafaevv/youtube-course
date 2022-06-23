@@ -13,7 +13,7 @@ import classes from "./DiscountsCarousel.module.scss";
 
 const DiscountsCarousel = () => {
   const [data, setData] = useState(null);
-  const { like } = useSelector((state) => state);
+  const { like, cart: cartItems } = useSelector((state) => state);
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("http://localhost:4000/discounts");
@@ -28,8 +28,12 @@ const DiscountsCarousel = () => {
       {data && (
         <Swiper navigation={true} modules={[Navigation]} slidesPerView={4}>
           {data.map((item, index) => (
-            <SwiperSlide key={index}>
-              <ProductCart key={item.id} data={item} liked={item.id in like} />
+            <SwiperSlide key={item.id}>
+              <ProductCart
+                data={item}
+                liked={item.id in like}
+                selected={item.id in cartItems}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

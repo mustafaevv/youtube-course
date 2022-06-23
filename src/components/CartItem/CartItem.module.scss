@@ -1,0 +1,63 @@
+@import "../../theme.scss";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 45px;
+  border-bottom: 1px solid $black;
+  margin-top: 30px;
+
+  &__image {
+    width: 200px;
+    height: 200px;
+    margin-right: 25px;
+  }
+
+  &__name {
+    font-weight: 400;
+    font-size: 18px;
+    flex-basis: 400px;
+    columns: $text_blue;
+    color: $black;
+    text-align: left;
+  }
+
+  &__trash {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-right: 150px;
+    color: $text_disabled;
+  }
+
+  &__controller {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    background: #f8f8f8;
+    justify-content: space-between;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+
+    & button {
+      width: 40px;
+      height: 40px;
+      border: none;
+      outline: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 25px;
+    }
+  }
+
+  &__totalPrice {
+    flex-grow: 1;
+    text-align: right;
+    margin-left: 30px;
+    color: $black;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
@@ -8,12 +9,13 @@ import classNames from "classnames";
 import Container from "../../layout/Container";
 import logo from "../../images/logo.png";
 import categories from "../../routes/categories";
+import { getItemsCount } from "../../redux/cart";
 
 import classes from "./Header.module.scss";
 
 const Header = () => {
   const location = useLocation();
-
+  const cartItemsCount = useSelector(getItemsCount);
   return (
     <header className={classes["header"]}>
       <Container className={classes["header__container"]}>
@@ -26,10 +28,15 @@ const Header = () => {
             icon={faHeart}
           />
         </Link>
-        <FontAwesomeIcon
-          className={classes["header__bag"]}
-          icon={faBagShopping}
-        />
+        <Link to="/cart" className={classes["header__bag-wrapper"]}>
+          <FontAwesomeIcon
+            className={classes["header__bag"]}
+            icon={faBagShopping}
+          />
+          {Boolean(cartItemsCount) && (
+            <p className={classes["header__bag-count"]}>{cartItemsCount}</p>
+          )}
+        </Link>
       </Container>
       <Container>
         <ul className={classes["header__list"]}>

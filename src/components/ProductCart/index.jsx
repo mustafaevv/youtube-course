@@ -1,17 +1,20 @@
+import React from "react";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import classNames from "classnames";
-import classes from "./ProductCart.module.scss";
 import { likeItem } from "../../redux/likeSlice";
 import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../../redux/cart";
+import classNames from "classnames";
 
-const ProductCart = ({ className, data,liked }) => {
+import classes from "./ProductCart.module.scss";
+
+const ProductCart = ({ className, data, liked, selected }) => {
   const dispatch = useDispatch();
   const [image] = data.images;
-  const [selected, setSelected] = useState(false);
-  const selectItem = () => setSelected((prevState) => !prevState);
+  const selectItem = () => {
+    dispatch(selected ? removeFromCart(data.id) : addToCart(data));
+  };
   const handleLike = () => dispatch(likeItem(data));
 
   return (
