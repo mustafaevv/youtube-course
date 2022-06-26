@@ -14,13 +14,13 @@ const Category = () => {
   const { type } = useParams();
   const { pathname } = useLocation();
   const [data, setData] = useState(null);
-  const { like,cart: cartItems } = useSelector((state) => state);
+  const { like, cart: cartItems } = useSelector((state) => state);
   const { text: title } = categories.find((item) => item.link === pathname);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        `http://localhost:4000/products?category=${type}`
+        `${process.env.REACT_APP_API_URL}/florisman_items?category=${type}`
       );
       const cards = await res.json();
       setData(cards);

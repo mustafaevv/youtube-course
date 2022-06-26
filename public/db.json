@@ -18,8 +18,8 @@
       "images": [
         "http://cdn.shopify.com/s/files/1/1507/9940/products/Deluxe-Fruit-Basket-10-Types-of-Fruits-Fruit-Basket_1200x1200.jpg?v=1634579686"
       ],
-      "price": 7000,
-      "discount": 4000
+      "price": 70,
+      "discount": 120
     },
     {
       "id": 3,
@@ -29,8 +29,8 @@
         "https://toshkentgullari.uz/thumb/2/jTsCcZtlM6PLQx-fqtiMbA/400r400/d/img_8933.jpg",
         "https://toshkentgullari.uz/thumb/2/_JklaBmhVedLegUrFihykA/400r400/d/img_8934.jpg"
       ],
-      "price": 200,
-      "discount": 300
+      "price": 120,
+      "discount": 230
     },
     {
       "id": 1,
@@ -49,8 +49,8 @@
       "images": [
         "https://m.media-amazon.com/images/I/51QliHi9pqL._AC_SL1000_.jpg"
       ],
-      "price": 7000,
-      "discount": 4000
+      "price": 70,
+      "discount": 110
     },
     {
         "id": 20,
@@ -61,7 +61,7 @@
         ],
         "price": 7000,
         "discount": 4000
-      }
+    }
   ],
 
   "products": [

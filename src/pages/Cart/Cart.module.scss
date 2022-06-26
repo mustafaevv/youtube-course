@@ -24,3 +24,20 @@
     font-weight: bold;
   }
 }
+
+.order-button{
+  font-weight: 700;
+  font-size: 20px;
+  width: max-content;
+  line-height: 50px;
+  color: $white;
+  background: $green;
+  padding: 0 100px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  display: block;
+  margin: auto;
+  margin-top: 35px;
+  cursor: pointer;
+}

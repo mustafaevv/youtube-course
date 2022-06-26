@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import classNames from "classnames";
+
 import Container from "../../layout/Container";
+import image from "../../images/orderFormImage.jpg";
 
 import classes from "./Orderform.module.scss";
-import image from "../../images/orderFormImage.jpg";
+import {
+  validateName,
+  validatePhoneContent,
+  valiDatePhoneNumber,
+  validateText,
+} from "./helper";
 
 const initialData = {
   name: "",
@@ -12,12 +20,27 @@ const initialData = {
 
 const Orderform = () => {
   const [fields, setFields] = useState(initialData);
-  const setValue = (event) =>
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    const isValid =
+      validateName(fields.name) &&
+      validateText(fields.text) &&
+      valiDatePhoneNumber(fields.tel);
+    setDisabled(!isValid);
+  }, [fields]);
+
+  const setValue = (event) => {
+    if (event.target.name === "tel" && !validatePhoneContent(event.target.value))
+      return;
     setFields((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setFields(initialData);
   };
+
   return (
     <Container className={classes["order-form"]}>
       <h2 className={classes["order-form__title"]}>Order a unique basket</h2>
@@ -48,7 +71,10 @@ const Orderform = () => {
           ></textarea>
           <button
             onClick={handleSubmit}
-            className={classes["order-form__button"]}
+            className={classNames(classes["order-form__button"], {
+              [classes["order-form__button_disabled"]]: disabled,
+            })}
+            disabled={disabled}
           >
             Send
           </button>
