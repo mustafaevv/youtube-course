@@ -16,6 +16,7 @@ import classes from "./Header.module.scss";
 const Header = () => {
   const location = useLocation();
   const cartItemsCount = useSelector(getItemsCount);
+  console.log(getItemsCount);
   return (
     <header className={classes["header"]}>
       <Container className={classes["header__container"]}>
